@@ -49,6 +49,28 @@ class TreeItem:
                 return right_height
         else:
             return 0
+            
+    def is_balanced(self, root):
+        if root.left is not None and root.right is not None:
+            if abs(self.get_height(root.left) - self.get_height(root.right)) <= 1:
+                print(abs(self.get_height(root.left) - self.get_height(root.right)))
+                self.is_balanced(root.left)
+                self.is_balanced(root.right)
+                return True
+            else:
+                return False
+        elif root.left is None or root.right is None:
+            return True
+        elif root.left is None:
+            if self.get_height(root.right) - 0 <= 1:
+                return True
+            else:
+                return False
+        elif root.right is None:
+            if self.get_height(root.left) - 0 <= 1:
+                return True
+            else:
+                return False
 
 
 tree_1 = TreeItem(10)
