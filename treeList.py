@@ -32,6 +32,24 @@ class TreeItem:
             else:
                 return False
 
+    def get_height(self, root):
+        if root.left is not None or root.right is not None:
+            if root.left is not None and root.right is not None:
+                left_height = 1 + self.get_height(root.left)
+                right_height = 1 + self.get_height(root.right)
+            elif root.left is None:
+                right_height = 1 + self.get_height(root.right)
+                left_height = 0
+            else:
+                left_height = 1 + self.get_height(root.left)
+                right_height = 0
+            if left_height > right_height:
+                return left_height
+            else:
+                return right_height
+        else:
+            return 0
+
 
 tree_1 = TreeItem(10)
 tree_2 = TreeItem(10)
