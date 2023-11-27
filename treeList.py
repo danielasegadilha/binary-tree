@@ -21,16 +21,15 @@ class TreeItem:
             else:
                 self.insert(root.right, item)
 
-    def is_simetric(self, root):
-        if root.left is None and root.right is None:
+    def is_simetric(self, root_left, root_right):
+        if root_left is not None and root_right is not None:
+            left_side = self.is_simetric(root_left.left, root_right.left)
+            right_side = self.is_simetric(root_left.right, root_right.right)
+            return left_side and right_side
+        elif root_left is None and root_right is None:
             return True
-        elif root.left is None or root.right is None:
-            return False
         else:
-            if self.is_simetric(root.left) == self.is_simetric(root.right):
-                return True
-            else:
-                return False
+            return False
 
     def get_height(self, root):
         if root.left is not None or root.right is not None:
@@ -49,14 +48,13 @@ class TreeItem:
                 return right_height
         else:
             return 0
-            
+
     def is_balanced(self, root):
         if root.left is not None and root.right is not None:
             if abs(self.get_height(root.left) - self.get_height(root.right)) <= 1:
-                print(abs(self.get_height(root.left) - self.get_height(root.right)))
-                self.is_balanced(root.left)
-                self.is_balanced(root.right)
-                return True
+                left_side = self.is_balanced(root.left)
+                right_side = self.is_balanced(root.right)
+                return left_side and right_side
             else:
                 return False
         elif root.left is None or root.right is None:
@@ -71,7 +69,6 @@ class TreeItem:
                 return True
             else:
                 return False
-
 
 tree_1 = TreeItem(10)
 tree_2 = TreeItem(10)
