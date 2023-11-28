@@ -30,7 +30,7 @@ class Binarytree:
         else:
             return self.smallest(root.left)
 
-    def is_simetric(self, root_left, root_right):
+    def is_symmetric(self, root_left, root_right):
         if root_left is not None and root_right is not None:
             return self.is_simetric(root_left.left, root_right.left) and 
             self.is_simetric(root_left.right, root_right.right)
