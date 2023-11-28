@@ -57,7 +57,7 @@ class TreeItem:
                 return left_side and right_side
             else:
                 return False
-        elif root.left is None or root.right is None:
+        elif root.left is None and root.right is None:
             return True
         elif root.left is None:
             if self.get_height(root.right) - 0 <= 1:
