@@ -86,7 +86,4 @@ class Binarytree:
                 return False
         else:
             return False
-if tree_1.is_simetric(tree_1):
-    print(f"é simetrico")
-else:
-    print(f"não é")
+            
